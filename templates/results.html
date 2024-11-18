@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Leaf Disease Detection Results</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #2f8f20;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            font-size: 1.5rem;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+            width: 250px;  /* Set a fixed width for uniform size */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background-color: #2f8f20;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s ease-in-out;
+        }
+        .button:hover {
+            background-color: #277017;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Rice Leaf Disease Detection Results</h1>
+        <h2>Predicted Disease: <strong>{{ disease }}</strong></h2>
+
+        <div class="image-container">
+            <div class="card">
+                <img src="{{ url_for('static', filename='uploads/' ~ original_image) }}" alt="Original Image">
+                <h3>Original Image</h3>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='uploads/' ~ grayscale_image) }}" alt="Grayscale Image">
+                <h3>Grayscale Image</h3>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='uploads/' ~ hsv_image) }}" alt="HSV Image">
+                <h3>HSV Image</h3>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='uploads/' ~ segmented_image) }}" alt="Segmented Image">
+                <h3>Segmented Image</h3>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='uploads/' ~ disease_encircled_image) }}" alt="Disease Encircled Image">
+                <h3>Disease Encircled Image</h3>
+            </div>
+        </div>
+
+        <a href="/" class="button">Upload Another Image</a>
+    </div>
+
+    <footer>
+        <p>&copy; Rice Leaf Disease Detection. Mini Project By CHANDANA T.</p>
+    </footer>
+
+</body>
+</html>
